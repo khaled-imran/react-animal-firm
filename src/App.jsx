@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-function App() {
+function useAnimalSearch() {
   const [animals, setAnimals] = useState([]);
 
   useEffect(() => { 
@@ -19,6 +19,12 @@ function App() {
 
     localStorage.setItem('lastQuery', q);
   };
+
+  return { search, animals };
+}
+
+function App() {
+  const { search, animals } = useAnimalSearch();
 
   return (
     <main>
